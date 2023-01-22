@@ -18,9 +18,16 @@ public class Jdbc_Main {
             Statement stmt = conn.createStatement();
 
             // Execute a query
-            ResultSet rs = stmt.executeQuery("Select * from Employee where salary>7000000");
+            ResultSet rs = stmt.executeQuery("Select gender,sum(salary) from employee_payroll group by gender");
+            displayResultSet(rs);
 
+            rs = stmt.executeQuery("Select gender,avg(salary) from employee_payroll group by gender");
+            displayResultSet(rs);
 
+            rs = stmt.executeQuery("Select gender,max(salary) from employee_payroll group by gender");
+            displayResultSet(rs);
+
+            rs = stmt.executeQuery("Select gender,min(salary) from employee_payroll group by gender");
             displayResultSet(rs);
 
             // Close the connection
