@@ -12,13 +12,14 @@ public class Jdbc_Main {
             Connection conn = DriverManager.getConnection(
                     "jdbc:mysql://127.0.0.1:3306/payroll_service","root","Mysql^131");
 
-            executeUpdateQuery(conn,"Update Employee set salary=7000000 where name='Soujanya'");
+            //executeUpdateQuery(conn,"Update Employee set salary=7000000 where name='Soujanya'");
 
             // Create a statement
             Statement stmt = conn.createStatement();
 
             // Execute a query
-            ResultSet rs = stmt.executeQuery("Select * from Employee");
+            ResultSet rs = stmt.executeQuery("Select * from Employee where salary>7000000");
+
 
             displayResultSet(rs);
 
