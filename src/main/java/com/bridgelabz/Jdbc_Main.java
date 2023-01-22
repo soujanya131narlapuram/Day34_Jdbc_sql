@@ -12,11 +12,13 @@ public class Jdbc_Main {
             Connection conn = DriverManager.getConnection(
                     "jdbc:mysql://127.0.0.1:3306/payroll_service","root","Mysql^131");
 
+            executeUpdateQuery(conn,"Update Employee set salary=7000000 where name='Soujanya'");
+
             // Create a statement
             Statement stmt = conn.createStatement();
 
             // Execute a query
-            ResultSet rs = stmt.executeQuery("SELECT * FROM Employee");
+            ResultSet rs = stmt.executeQuery("Select * from Employee");
 
             displayResultSet(rs);
 
@@ -38,6 +40,12 @@ public class Jdbc_Main {
             }
             System.out.println("");
         }
+    }
+
+    public static void executeUpdateQuery(Connection conn, String query) throws SQLException {
+        Statement stmt = conn.createStatement();
+        int result = stmt.executeUpdate(query);
+        System.out.println(result + " rows affected by the update query");
     }
 
 }
